@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bank | Contact & Support</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="gradient-bg text-white font-sans">
+    <nav class="navbar">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="brand">My Bank</a>
+        <div class="space-x-8 hidden md:flex items-center">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden text-3xl"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu md:hidden hidden">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+    </nav>
+
+    <section class="section-padding pt-36">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h1>Contact Banking Support</h1>
+          <p>
+            Need help with account services, cards, loans, or digital banking?
+            Reach us through any channel below.
+          </p>
+        </div>
+
+        <div class="feature-grid mb-10">
+          <article class="card">
+            <h3>24/7 Helpline</h3>
+            <p>
+              Speak with customer care for urgent banking, card blocking, and
+              transaction help.
+            </p>
+            <p class="contact-highlight">+1 (800) 123-4567</p>
+          </article>
+          <article class="card">
+            <h3>Email Desk</h3>
+            <p>
+              Send your issue with account details and we respond within 2
+              business hours.
+            </p>
+            <p class="contact-highlight">support@mybank.com</p>
+          </article>
+          <article class="card">
+            <h3>Branch Banking</h3>
+            <p>
+              Visit your nearest branch for KYC updates, locker service, and
+              cash operations.
+            </p>
+            <p class="contact-highlight">350+ Branches Nationwide</p>
+          </article>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <div class="form-container animate-slideUp">
+            <h2 class="text-2xl font-bold mb-6 text-emerald-400">
+              Submit a Support Request
+            </h2>
+            <form>
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                id="name"
+                type="text"
+                class="input"
+                placeholder="John Doe"
+              />
+
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                id="email"
+                type="email"
+                class="input"
+                placeholder="john@email.com"
+              />
+
+              <label for="issue" class="form-label">Issue Type</label>
+              <select id="issue" class="input">
+                <option>Account Services</option>
+                <option>Credit or Debit Card</option>
+                <option>Loan Enquiry</option>
+                <option>UPI / Transfer Issue</option>
+                <option>Internet Banking Access</option>
+              </select>
+
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                id="message"
+                rows="4"
+                class="input"
+                placeholder="Please describe your issue..."
+              ></textarea>
+
+              <button class="btn-primary w-full" type="submit">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div class="space-y-6">
+            <div class="glass-card">
+              <h2 class="text-2xl font-bold text-emerald-400 mb-4">
+                Branch & Office Information
+              </h2>
+              <ul class="text-slate-300 space-y-2">
+                <li>
+                  <strong>Head Office:</strong> Financial District, New York,
+                  USA
+                </li>
+                <li>
+                  <strong>Working Hours:</strong> Mon - Sat, 9:00 AM - 6:00 PM
+                </li>
+                <li>
+                  <strong>Priority Banking:</strong> Dedicated relationship
+                  managers
+                </li>
+                <li>
+                  <strong>ATM Network:</strong> 2,000+ smart ATMs available
+                </li>
+              </ul>
+            </div>
+
+            <div class="glass-card">
+              <h2 class="text-2xl font-bold text-emerald-400 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  How do I block my lost card?
+                </button>
+                <div class="faq-answer">
+                  Use the My Bank app card controls instantly or call our
+                  helpline for immediate card block support.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  What documents are needed for account opening?
+                </button>
+                <div class="faq-answer">
+                  A valid government ID, address proof, and PAN or tax number
+                  are typically required for verification.
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button">
+                  Can I increase my transaction limit?
+                </button>
+                <div class="faq-answer">
+                  Yes, limit upgrades are available through internet banking
+                  settings after profile verification.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div
+        class="max-w-7xl mx-auto px-6 py-7 flex flex-col md:flex-row gap-3 justify-between text-sm text-slate-400"
+      >
+        <p>© 2026 My Bank. We are here when you need us.</p>
+        <p>Customer Care • Branch Services • Digital Support</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

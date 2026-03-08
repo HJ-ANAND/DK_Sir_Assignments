@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bank | Smart Digital Banking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="gradient-bg text-white font-sans">
+    <nav class="navbar">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="brand">My Bank</a>
+        <div class="space-x-8 hidden md:flex items-center">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden text-3xl"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu md:hidden hidden">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <header class="hero section-padding">
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center"
+      >
+        <div class="animate-fadeIn">
+          <p class="tagline">Next-Generation Banking Platform</p>
+          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-5">
+            Bank Smarter with
+            <span class="text-emerald-400">Security, Speed & Control</span>
+          </h1>
+          <p class="text-slate-300 text-lg mb-8 max-w-xl">
+            Open savings accounts, manage cards, pay bills, track goals, and
+            apply for instant loans from one secure banking dashboard.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="contact.html" class="btn-primary">Open an Account</a>
+            <a href="about.html" class="btn-outline">Explore Features</a>
+          </div>
+        </div>
+
+        <div class="glass-card animate-slideUp">
+          <h2 class="text-2xl font-bold mb-6 text-emerald-400">
+            Live Bank Snapshot
+          </h2>
+          <div class="stats-grid">
+            <div>
+              <p class="stat-value">
+                <span class="counter" data-target="95">0</span>%
+              </p>
+              <p class="stat-label">Customer satisfaction</p>
+            </div>
+            <div>
+              <p class="stat-value">
+                <span class="counter" data-target="12">0</span>M+
+              </p>
+              <p class="stat-label">Transactions / month</p>
+            </div>
+            <div>
+              <p class="stat-value">
+                <span class="counter" data-target="350">0</span>+
+              </p>
+              <p class="stat-label">City branches</p>
+            </div>
+            <div>
+              <p class="stat-value">
+                <span class="counter" data-target="24">0</span>/7
+              </p>
+              <p class="stat-label">AI fraud monitoring</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-padding section-surface reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h2>Accounts Tailored to You</h2>
+          <p>
+            Choose account options designed for students, families, freelancers,
+            and businesses.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card">
+            <h3>Smart Savings</h3>
+            <p>
+              High-yield savings with auto-roundups and spending insights to
+              grow your money consistently.
+            </p>
+            <ul>
+              <li>Up to 6.5% annual interest</li>
+              <li>Goal buckets for travel & emergency</li>
+              <li>No minimum balance fee</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Premium Current</h3>
+            <p>
+              Everyday spending account with card controls, UPI, utility bill
+              autopay, and cashback rewards.
+            </p>
+            <ul>
+              <li>Virtual + physical debit card</li>
+              <li>Free domestic fund transfer</li>
+              <li>Real-time spending notifications</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Business Banking</h3>
+            <p>
+              Complete merchant banking for invoicing, payroll, team cards, and
+              vendor payment workflows.
+            </p>
+            <ul>
+              <li>Multi-user account access</li>
+              <li>Bulk salary processing</li>
+              <li>GST-ready monthly statements</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding reveal">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 items-start">
+        <div class="glass-card">
+          <h2 class="text-3xl font-bold text-emerald-400 mb-4">
+            Loan EMI Estimator
+          </h2>
+          <p class="text-slate-300 mb-6">
+            Check your estimated monthly EMI before applying for a home, car, or
+            personal loan.
+          </p>
+
+          <div class="space-y-4">
+            <div>
+              <label for="loan-amount" class="form-label"
+                >Loan Amount (₹)</label
+              >
+              <input
+                id="loan-amount"
+                type="number"
+                class="input"
+                value="500000"
+                min="10000"
+              />
+            </div>
+            <div>
+              <label for="interest-rate" class="form-label"
+                >Interest Rate (% yearly)</label
+              >
+              <input
+                id="interest-rate"
+                type="number"
+                class="input"
+                value="9"
+                step="0.1"
+                min="1"
+              />
+            </div>
+            <div>
+              <label for="loan-years" class="form-label">Tenure (years)</label>
+              <input
+                id="loan-years"
+                type="number"
+                class="input"
+                value="5"
+                min="1"
+              />
+            </div>
+            <button id="calc-emi" class="btn-primary w-full">
+              Calculate EMI
+            </button>
+            <p id="emi-result" class="result-box">
+              Estimated EMI: ₹10,376 / month
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="card">
+            <h3>Security Features</h3>
+            <p>
+              Protect your money with enterprise-grade security and instant
+              controls from your device.
+            </p>
+            <ul>
+              <li>Biometric app login + 2FA</li>
+              <li>One-tap card freeze/unfreeze</li>
+              <li>Suspicious activity auto alerts</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Digital Services</h3>
+            <p>
+              Everything from bill payments to investment SIPs under one modern
+              banking app.
+            </p>
+            <ul>
+              <li>UPI, NEFT, RTGS transfers</li>
+              <li>Credit card due reminders</li>
+              <li>Mutual fund SIP setup</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding section-surface reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h2>More Banking Benefits</h2>
+          <p>
+            Powerful everyday tools to help you save better, spend smarter, and
+            stay fully in control of your money.
+          </p>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="mini-card">
+            <h3>Personal Finance Insights</h3>
+            <p>
+              Weekly analytics and category-based spend reports to improve your
+              budgeting habits.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Rewards & Cashback</h3>
+            <p>
+              Earn points and cashback on card spends, travel bookings, and
+              utility bill payments.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Family Banking Access</h3>
+            <p>
+              Add family members with role-based controls, teen cards, and
+              monthly spend limits.
+            </p>
+          </article>
+          <article class="mini-card">
+            <h3>Auto-Invest Mode</h3>
+            <p>
+              Move spare balance to recurring deposits or SIPs automatically at
+              the end of every month.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h2>What Customers Say</h2>
+          <p>
+            Real stories from users who switched to My Bank for better digital
+            banking experiences.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card quote-card">
+            <p>
+              "The spending insights helped me reduce unnecessary expenses and
+              build my emergency fund in just 4 months."
+            </p>
+            <h4>— Priya S., Working Professional</h4>
+          </article>
+          <article class="card quote-card">
+            <p>
+              "Our startup payroll and vendor payments are now fully automated.
+              The business dashboard saves hours every week."
+            </p>
+            <h4>— Arjun K., Founder</h4>
+          </article>
+          <article class="card quote-card">
+            <p>
+              "Fast support, secure app login, and instant card control gave me
+              confidence to move all my banking here."
+            </p>
+            <h4>— Meera T., Freelancer</h4>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div
+        class="max-w-7xl mx-auto px-6 py-7 flex flex-col md:flex-row gap-3 justify-between text-sm text-slate-400"
+      >
+        <p>© 2026 My Bank. Secure digital banking for everyone.</p>
+        <p>RBI Registered • ISO 27001 Certified • 24/7 Customer Care</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

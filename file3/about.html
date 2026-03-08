@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bank | About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="gradient-bg text-white">
+    <nav class="navbar">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="index.html" class="brand">My Bank</a>
+        <div class="space-x-8 hidden md:flex items-center">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link active">About</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+        <button
+          id="menu-btn"
+          class="md:hidden text-3xl"
+          aria-label="Open navigation"
+        >
+          ☰
+        </button>
+      </div>
+      <div id="mobile-menu" class="mobile-menu md:hidden hidden">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <section class="section-padding pt-36 reveal">
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center"
+      >
+        <div class="animate-fadeIn">
+          <p class="tagline">Our Banking Journey</p>
+          <h1 class="text-5xl font-bold leading-tight mb-5">
+            Building the Most Trusted
+            <span class="text-emerald-400">Digital Bank</span>
+          </h1>
+          <p class="text-slate-300 text-lg">
+            Since 2015, My Bank has focused on transparent banking experiences,
+            responsible lending, and digital innovation that puts customers
+            first.
+          </p>
+        </div>
+        <div class="glass-card">
+          <h2 class="text-2xl font-bold text-emerald-400 mb-4">
+            What We Stand For
+          </h2>
+          <ul class="space-y-3 text-slate-300 list-disc pl-6">
+            <li>
+              Simple, fair, and transparent banking for all customer segments
+            </li>
+            <li>Advanced security standards with privacy-first architecture</li>
+            <li>Financial wellness through smart savings and advisory tools</li>
+            <li>Sustainable community growth through responsible finance</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding section-surface reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h2>Core Banking Features We Deliver</h2>
+          <p>
+            Modern capabilities designed for both everyday customers and
+            businesses.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="card">
+            <h3>Digital Onboarding</h3>
+            <p>
+              Open an account in minutes with secure eKYC, document upload, and
+              instant verification.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Smart Credit Engine</h3>
+            <p>
+              Fast personal and business loan approvals powered by AI risk
+              scoring and transparent rates.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Wealth & Advisory</h3>
+            <p>
+              Goal planning, SIP investments, and retirement projections built
+              directly into your bank app.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding reveal">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="section-head text-left">
+          <h2>Milestones</h2>
+          <p>
+            How My Bank evolved into a complete financial services platform.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>2015</h3>
+            <p>
+              Launched with mobile-first savings and current account services.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>2019</h3>
+            <p>
+              Introduced instant card control, AI fraud monitoring, and
+              branch-lite model.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>2023</h3>
+            <p>
+              Expanded to business banking, payroll APIs, and invoice finance
+              for SMEs.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <h3>2026</h3>
+            <p>
+              Serving millions of users with integrated banking, payments, and
+              wealth products.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding section-surface reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="section-head">
+          <h2>Our Impact in Numbers</h2>
+          <p>
+            Consistent growth backed by trust, secure technology, and customer
+            satisfaction.
+          </p>
+        </div>
+        <div class="impact-grid">
+          <div class="impact-card">
+            <p class="impact-value">8M+</p>
+            <p class="impact-label">Active retail customers</p>
+          </div>
+          <div class="impact-card">
+            <p class="impact-value">220K+</p>
+            <p class="impact-label">Business banking clients</p>
+          </div>
+          <div class="impact-card">
+            <p class="impact-value">99.97%</p>
+            <p class="impact-label">Digital platform uptime</p>
+          </div>
+          <div class="impact-card">
+            <p class="impact-value">2 hrs</p>
+            <p class="impact-label">Average support resolution</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-padding reveal">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8">
+        <article class="card">
+          <h3>Compliance & Trust Framework</h3>
+          <p>
+            We follow strict financial regulations, multi-layer risk controls,
+            and regular audits to keep all banking operations secure.
+          </p>
+          <ul>
+            <li>End-to-end encrypted data pipelines</li>
+            <li>Regular vulnerability testing and monitoring</li>
+            <li>Transparent fee and lending disclosures</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Community Banking Programs</h3>
+          <p>
+            We support students, micro-businesses, and rural entrepreneurs
+            through inclusive credit and financial education programs.
+          </p>
+          <ul>
+            <li>Women entrepreneur credit support</li>
+            <li>Student savings and scholarship-linked accounts</li>
+            <li>Small business mentorship workshops</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div
+        class="max-w-7xl mx-auto px-6 py-7 flex flex-col md:flex-row gap-3 justify-between text-sm text-slate-400"
+      >
+        <p>© 2026 My Bank. Built on trust and innovation.</p>
+        <p>Secure • Transparent • Customer First</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

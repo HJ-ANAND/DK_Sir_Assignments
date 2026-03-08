@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Tasks Tester</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+              body: ["Plus Jakarta Sans", "sans-serif"],
+            },
+            colors: {
+              ink: "#0b1020",
+            },
+            boxShadow: {
+              panel: "0 20px 60px -30px rgba(0, 0, 0, 0.7)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body class="bg-ink text-slate-100 font-body min-h-screen antialiased">
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <main
+      class="relative mx-auto w-full max-w-[90vw] px-4 py-8 sm:px-8 sm:py-12"
+    >
+      <section
+        class="rounded-3xl border border-slate-700/60 bg-slate-900/65 p-6 shadow-panel backdrop-blur-xl sm:p-10"
+      >
+        <p
+          class="inline-block rounded-full border border-cyan-400/40 bg-cyan-500/10 px-3 py-1 text-xs font-semibold tracking-[0.14em] text-cyan-300 uppercase"
+        >
+          JavaScript Practical Assignment
+        </p>
+
+        <h1
+          class="mt-4 font-display text-3xl leading-tight text-white sm:text-5xl"
+        >
+          Task Runner Dashboard
+        </h1>
+
+        <p class="mt-4 max-w-2xl text-sm text-slate-300 sm:text-base">
+          Test each JavaScript exercise quickly from one place. Click any card
+          to run its related function and inspect the result in your browser
+          console.
+        </p>
+
+        <div
+          class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+        >
+          <button
+            onclick="runProfileFormatter()"
+            class="group rounded-2xl border border-slate-700 bg-slate-800/60 p-4 text-left transition duration-300 hover:-translate-y-1 hover:border-cyan-300/50 hover:bg-slate-800"
+          >
+            <p class="text-sm text-cyan-300">Task 01</p>
+            <h2 class="mt-1 text-lg font-semibold text-white">
+              User Profile Formatter
+            </h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Format and display profile information.
+            </p>
+          </button>
+
+          <button
+            onclick="runUsernameGenerator()"
+            class="group rounded-2xl border border-slate-700 bg-slate-800/60 p-4 text-left transition duration-300 hover:-translate-y-1 hover:border-emerald-300/50 hover:bg-slate-800"
+          >
+            <p class="text-sm text-emerald-300">Task 02</p>
+            <h2 class="mt-1 text-lg font-semibold text-white">
+              Username Generator
+            </h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Create usernames from provided data.
+            </p>
+          </button>
+
+          <button
+            onclick="runMarksAnalyzer()"
+            class="group rounded-2xl border border-slate-700 bg-slate-800/60 p-4 text-left transition duration-300 hover:-translate-y-1 hover:border-amber-300/50 hover:bg-slate-800"
+          >
+            <p class="text-sm text-amber-300">Task 03</p>
+            <h2 class="mt-1 text-lg font-semibold text-white">
+              Marks Analyzer
+            </h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Analyze marks and calculate summaries.
+            </p>
+          </button>
+
+          <button
+            onclick="runProductDiscount()"
+            class="group rounded-2xl border border-slate-700 bg-slate-800/60 p-4 text-left transition duration-300 hover:-translate-y-1 hover:border-orange-300/50 hover:bg-slate-800"
+          >
+            <p class="text-sm text-orange-300">Task 04</p>
+            <h2 class="mt-1 text-lg font-semibold text-white">
+              Product Discount
+            </h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Apply product discounts based on conditions.
+            </p>
+          </button>
+
+          <button
+            onclick="runShoppingCart()"
+            class="group rounded-2xl border border-slate-700 bg-slate-800/60 p-4 text-left transition duration-300 hover:-translate-y-1 hover:border-fuchsia-300/50 hover:bg-slate-800"
+          >
+            <p class="text-sm text-fuchsia-300">Task 05</p>
+            <h2 class="mt-1 text-lg font-semibold text-white">Shopping Cart</h2>
+            <p class="mt-2 text-sm text-slate-300">
+              Simulate and evaluate cart operations.
+            </p>
+          </button>
+
+          <button
+            onclick="runCategoryFlattener()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-sky-300">Task 06</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Category Flattener
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">Nested Category Flattener</p>
+          </button>
+
+          <button
+            onclick="runOrderCalculator()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-lime-300">Task 07</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Order Calculator
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+              Create an array of order price.
+            </p>
+          </button>
+
+          <button
+            onclick="runEmailExtractor()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-violet-300">Task 08</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Email Extractor
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+              Enter Your Email in the prompt
+            </p>
+          </button>
+
+          <button
+            onclick="runWordCounter()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-rose-300">Task 09</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              word Counter
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+              Enter a Sentence in the prompt
+            </p>
+          </button>
+
+          <button
+            onclick="runArrayMerger()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-teal-300">Task 10</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Array Merger
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+              Create 2 array of numbers.
+            </p>
+          </button>
+
+          <button
+          onclick="runFlexibleSum()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-indigo-300">Task 11</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Flexible Sum
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Rest operator that accepts unlimited numbers.
+            </p>
+          </button>
+
+          <button
+          onclick="runEmployeeInspector()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-yellow-300">Task 12</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Employee Inspector
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Create an employee object.
+            </p>
+          </button>
+
+          <button
+          onclick="runObjectFreeze()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-red-300">Task 13</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Object Freeze
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Freeze the product object.
+            </p>
+          </button>
+
+          <button
+          onclick="runObjectSeal()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-blue-300">Task 14</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Object Seal
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Object seal experiment.
+            </p>
+          </button>
+
+          <button
+          onclick="runStudentObject()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-green-300">Task 15</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Student Object
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Creating an object representing student.properties:
+            </p>
+          </button>
+
+          <button
+          onclick="runOptionalChaining()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-pink-300">Task 16</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Optional Chaining
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                company -> department -> manager -> name.
+            </p>
+          </button>
+
+          <button
+          onclick="runFeedbackAnalyzer()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-purple-300">Task 17</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Feedback Analyzer
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Create an array of feedback comments.
+            </p>
+          </button>
+          
+          <button
+          onclick="runNameFormatter()"
+          class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+          <p class="text-sm text-cyan-300">Task 18</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+              Name Formatter
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                Array of names with extra spaces.Tasks:
+            </p>
+        </button>
+
+          <button
+          onclick="runCallbackGreeting()"
+            class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+          >
+            <p class="text-sm text-emerald-300">Task 19</p>
+            <h2 class="mt-1 text-lg font-semibold text-slate-200">
+                Callback Greeting
+            </h2>
+            <p class="mt-2 text-sm text-slate-400">
+                callback based Greeting System.
+            </p>
+        </button>
+
+        <button
+        onclick="runStudentProcessor()"
+          class="rounded-2xl border border-slate-600 bg-slate-800/30 p-4 text-left transition duration-300 hover:border-slate-500 hover:bg-slate-800/45"
+        >
+          <p class="text-sm text-orange-300">Task 20</p>
+          <h2 class="mt-1 text-lg font-semibold text-slate-200">
+            Student Processor
+          </h2>
+          <p class="mt-2 text-sm text-slate-400">
+            Student Data Processor
+          </p>
+        </button>
+    </div>
+      </section>
+    </main>
+
+    <script src="./profileFormatter.js"></script>
+    <script src="./usernameGenerator.js"></script>
+    <script src="./marksAnalyzer.js"></script>
+    <script src="./productDiscount.js"></script>
+    <script src="./shoppingCart.js"></script>
+    <script src="./categoryFlattener.js"></script>
+    <script src="./orderCalculator.js"></script>
+    <script src="./emailExtractor.js"></script>
+    <script src="./wordCounter.js"></script>
+    <script src="./arrayMerger.js"></script>
+    <script src="./flexibleSum.js"></script>
+    <script src="./employeeInspector.js"></script>
+    <script src="./objectFreeze.js"></script>
+    <script src="./objectSeal.js"></script>
+    <script src="./studentObject.js"></script>
+    <script src="./optionalChaining.js"></script>
+    <script src="./feedbackAnalyzer.js"></script>
+    <script src="./nameFormatter.js"></script>
+    <script src="./callbackGreeting.js"></script>
+    <script src="./studentProcessor.js"></script>
+  </body>
+</html>
