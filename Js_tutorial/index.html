@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Mode</title>
+  </head>
+  <body>
+    <h1 id="head">Heading is this.</h1>
+    <p id="test">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi id
+      quia deserunt quod temporibus est, vel itaque ducimus nostrum dolorem
+      quibusdam! Sint consectetur id a. Reprehenderit.
+    </p>
+    <button id="btn">Toggle</button>
+  </body>
+  <script>
+    const heading = document.getElementById("head");
+
+    const button = document.getElementById("btn");
+    const para = document.getElementById("test");
+    const theme = document.querySelector("body");
+
+    button.addEventListener("click", function () {
+      button.innerText = "Please Wait....";
+      button.disabled = true;
+      theme.style.backgroundColor = "grey";
+      heading.style.color = "yellow";
+      para.style.color = "aqua";
+    });
+  </script>
+</html>
