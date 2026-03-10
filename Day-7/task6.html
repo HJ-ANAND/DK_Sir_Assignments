@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <!-- Modern Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* ==========================================
+         UI ENHANCEMENTS: Glassmorphism & Theming
+         ========================================== */
+      :root {
+        /* Light Theme Auto/Manual Variables */
+        --bg-color: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        --glass-bg: rgba(255, 255, 255, 0.65);
+        --glass-border: rgba(255, 255, 255, 0.4);
+        --text-color: #333333;
+        --input-bg: rgba(255, 255, 255, 0.9);
+        --btn-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --btn-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        --btn-text: #ffffff;
+        --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        --item-bg: rgba(255, 255, 255, 0.85);
+      }
+
+      [data-theme="dark"] {
+        /* Dark Theme Auto/Manual Variables */
+        --bg-color: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+        --glass-bg: rgba(16, 25, 33, 0.5);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --text-color: #f1f1f1;
+        --input-bg: rgba(30, 40, 50, 0.7);
+        --btn-bg: linear-gradient(135deg, #4776e6 0%, #8e54e9 100%);
+        --btn-hover: linear-gradient(135deg, #8e54e9 0%, #4776e6 100%);
+        --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+        --item-bg: rgba(30, 40, 50, 0.8);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        /* Smooth transitions for theme changes */
+        transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+      }
+
+      body {
+        background: var(--bg-color);
+        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color);
+      }
+
+      /* Slide/Fade-in Page Animation */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+
+      .app-wrapper {
+        animation: fadeIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        background: var(--glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--glass-border);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        width: 100%;
+        max-width: 450px;
+        position: relative;
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+      
+      .theme-toggle:hover {
+        transform: rotate(30deg) scale(1.15);
+        background: rgba(128,128,128, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        font-size: 2rem;
+      }
+
+      .input-wrapper {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        min-width: 0;
+        padding: 14px 18px;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        outline: none;
+        background: var(--input-bg);
+        color: var(--text-color);
+        font-size: 1rem;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+      }
+
+      input[type="text"]:focus {
+        border-color: #8e54e9;
+        box-shadow: 0 0 10px rgba(142, 84, 233, 0.3);
+      }
+
+      button#btn {
+        flex-shrink: 0;
+        padding: 0 24px;
+        border: none;
+        border-radius: 12px;
+        background: var(--btn-bg);
+        color: var(--btn-text);
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        letter-spacing: 0.5px;
+      }
+
+      button#btn:hover {
+        background: var(--btn-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      }
+
+      button#btn:active {
+        transform: translateY(1px);
+      }
+
+      /* List & Custom Scrollbar Styles */
+      ul {
+        list-style: none;
+        padding: 0;
+        max-height: 320px;
+        overflow-y: auto;
+      }
+
+      ul::-webkit-scrollbar {
+        width: 6px;
+      }
+      ul::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ul::-webkit-scrollbar-thumb {
+        background: #8e54e9;
+        border-radius: 10px;
+      }
+
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      li {
+        background: var(--item-bg);
+        padding: 14px 18px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        animation: slideInLeft 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        border: 1px solid var(--glass-border);
+        transition: all 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      li:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      }
+
+      li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 4px;
+        background: var(--btn-bg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      li:hover::before {
+        opacity: 1;
+      }
+
+      li span {
+        flex: 1;
+        word-break: break-all;
+        transition: color 0.3s ease, text-decoration-color 0.3s ease;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- App Wrapper for Glassmorphism & Layout -->
+    <div class="app-wrapper">
+      
+      <!-- Theme Switcher -->
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme">🌓</button>
+      
+      <h1>TODO List</h1>
+      
+      <!-- Input Wrapper for styling flex constraints -->
+      <div class="input-wrapper">
+        <input type="text" id="tasks" placeholder="Enter A Task" autocomplete="off" />
+        <button id="btn">Add</button>
+      </div>
+      
+      <ul id="list-container"></ul>
+    </div>
+
+  <script>
+    // ==========================================
+    // UI EXTENSION: Dark Theme Toggle & LocalStorage Logic
+    // ==========================================
+    const themeToggle = document.getElementById("themeToggle");
+    const currentTheme = localStorage.getItem("theme") || "light";
+    
+    // Set initial theme
+    if (currentTheme === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      let theme = document.documentElement.getAttribute("data-theme");
+      if (theme === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+
+    // ==========================================
+    // ORIGINAL LOGIC (IDs and logic unchanged)
+    // ==========================================
+    const inputBox = document.getElementById("tasks");
+    const button = document.getElementById("btn");
+    const listContainer = document.getElementById("list-container");
+
+    button.addEventListener("click", addTask);
+
+    function addTask() {
+      if (inputBox.value === "") alert("You must write something!");
+      else {
+        let li = document.createElement("li");
+        li.innerHTML = `
+                <span>${inputBox.value}</span>
+            `;
+        listContainer.append(li);
+
+        li.addEventListener("click", function () {
+          // Original functional line:
+          li.style.textDecoration = "line-through";
+          
+          // Added micro-interaction UI polish (does not change logic)
+          li.style.opacity = "0.5"; 
+          li.style.transform = "scale(0.98)";
+          li.style.boxShadow = "none";
+        });
+
+        inputBox.value = "";
+      }
+    }
+  </script>
+</html>

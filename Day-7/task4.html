@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 7 Task 4</title>
+  </head>
+
+  <body>
+    <h2>Form Example</h2>
+
+    <form id="form">
+      <!-- <input type="text" id="name" placeholder="Enter name" /> -->
+
+      <input type="email" id="email" placeholder="Enter email" />
+      <input type="password" id="password" placeholder="Enter password" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+
+  <script>
+    const form = document.querySelector("#form");
+    // const nameInput = document.querySelector("#name");
+    const emailInput = document.querySelector("#email");
+    const passInput = document.querySelector("#password");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      //   const name = nameInput.value;
+      const email = emailInput.value;
+      const pass = passInput.value;
+
+      const len = pass.length;
+      const regex = /[A-Z]/;
+
+      if (len < 8 || len > 10 || !regex.test(pass))
+        console.log("Invalid Password.");
+
+      //   console.log("Name:", name);
+      console.log("Email:", email);
+    });
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 7 Task 1</title>
+  </head>
+  <body>
+    <button id="btn">Button</button>
+    <p id="text">0</p>
+    <button id="counter">next num.</button>
+  </body>
+  <script>
+    const button = document.getElementById("btn");
+    console.log(button);
+    button.addEventListener("click", function () {
+      console.log("button Clicked.");
+    });
+
+    const count = document.getElementById("counter");
+    const para = document.getElementById("text");
+
+    count.addEventListener("click", function () {
+      para.innerText++;
+    });
+  </script>
+</html>
