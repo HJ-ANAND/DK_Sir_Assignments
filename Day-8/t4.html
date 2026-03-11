@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Promise Example</title>
+  </head>
+  <body>
+    <h2>Promise Demo</h2>
+    <button id="loadBtn">Load Data</button>
+    <p id="output"></p>
+
+    <script>
+      fetchData = () => {
+        return new Promise((resolve, reject) => {
+          // simulate delay like API call
+          setTimeout(() => {
+            let success = true;
+
+            if (success) {
+              resolve("Data loaded successfully");
+            } else {
+              reject("Something went wrong");
+            }
+          }, 2000);
+        });
+      };
+
+      document.getElementById("loadBtn").addEventListener("click", () => {
+        document.getElementById("output").innerText = "Loading...";
+
+        fetchData()
+          .then(function (result) {
+            document.getElementById("output").innerText = result;
+          })
+          .catch(function (error) {
+            document.getElementById("output").innerText = error;
+          });
+      });
+    </script>
+  </body>
+</html>
