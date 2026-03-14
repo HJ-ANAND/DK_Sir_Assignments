@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Anime Soulmate Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;700&display=swap");
+      h1 {
+        font-family: "Bangers", cursive;
+        letter-spacing: 2px;
+      }
+      body {
+        font-family: "Outfit", sans-serif;
+      }
+      .glass-card {
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0a0a1f] text-white min-h-screen flex items-center justify-center p-4 selection:bg-indigo-500/30"
+  >
+    <div
+      class="max-w-xl w-full glass-card p-8 rounded-[2.5rem] shadow-[0_0_80px_rgba(79,70,229,0.15)] relative overflow-hidden"
+    >
+      <div
+        class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/20 blur-[80px] rounded-full"
+      ></div>
+
+      <div
+        id="setup-screen"
+        class="text-center space-y-6 py-6 transition-all duration-500"
+      >
+        <h1
+          class="text-5xl font-normal text-transparent bg-clip-text bg-gradient-to-b from-indigo-300 to-indigo-500"
+        >
+          SOUL DETECTOR
+        </h1>
+        <p class="text-slate-400 text-sm tracking-[0.2em] uppercase font-bold">
+          Answer the randomized trials
+        </p>
+        <div class="py-10">
+          <div
+            class="w-20 h-20 mx-auto border-2 border-indigo-500/30 rounded-full flex items-center justify-center animate-pulse"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-500 rounded-full shadow-[0_0_30px_rgba(99,102,241,0.6)]"
+            ></div>
+          </div>
+        </div>
+        <button
+          id="start-btn"
+          class="w-full bg-indigo-600 hover:bg-indigo-500 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all shadow-lg hover:shadow-indigo-500/20"
+        >
+          Begin Synchronization
+        </button>
+      </div>
+
+      <div
+        id="quiz-container"
+        class="hidden space-y-6 transition-all duration-500"
+      >
+        <div id="question-box" class="space-y-6">
+          <h2
+            id="question-text"
+            class="text-2xl font-bold text-indigo-100 text-center leading-tight min-h-[4rem]"
+          >
+            ...
+          </h2>
+          <div id="options-container" class="grid grid-cols-1 gap-3"></div>
+        </div>
+        <div
+          class="pt-6 border-t border-slate-800 flex items-center justify-between"
+        >
+          <div class="space-y-1">
+            <span
+              id="progress-text"
+              class="text-[10px] text-indigo-400 font-black uppercase tracking-widest"
+              >Phase 1 / 5</span
+            >
+            <div class="h-1 w-32 bg-slate-800 rounded-full overflow-hidden">
+              <div
+                id="progress-bar"
+                class="h-full bg-indigo-500 transition-all duration-500"
+                style="width: 20%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="result-area" class="hidden space-y-6">
+        <div class="text-center space-y-1">
+          <span
+            class="text-[10px] font-black text-indigo-400 uppercase tracking-[0.3em]"
+            >Synchronization Complete</span
+          >
+          <h2
+            id="char-name"
+            class="text-5xl font-bold text-white uppercase tracking-tight"
+          >
+            ...
+          </h2>
+          <div
+            id="char-role"
+            class="bg-indigo-500/10 border border-indigo-500/30 px-4 py-1 rounded-full text-indigo-300 text-[10px] font-bold uppercase mt-2 inline-block"
+          >
+            ...
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div
+            class="bg-slate-800/30 p-6 rounded-3xl border border-slate-700/50"
+          >
+            <h4
+              class="text-[10px] font-black text-indigo-400 uppercase mb-3 tracking-widest"
+            >
+              Origin & Vibe
+            </h4>
+            <p
+              id="char-desc"
+              class="text-sm text-slate-300 leading-relaxed italic"
+            >
+              ...
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/20"
+            >
+              <h4
+                class="text-[10px] font-black text-emerald-400 uppercase mb-2 tracking-widest"
+              >
+                Strengths
+              </h4>
+              <p
+                id="char-strengths"
+                class="text-[10px] text-slate-400 leading-snug"
+              >
+                ...
+              </p>
+            </div>
+            <div
+              class="bg-rose-500/5 p-4 rounded-2xl border border-rose-500/20"
+            >
+              <h4
+                class="text-[10px] font-black text-rose-400 uppercase mb-2 tracking-widest"
+              >
+                Weaknesses
+              </h4>
+              <p
+                id="char-weaknesses"
+                class="text-[10px] text-slate-400 leading-snug"
+              >
+                ...
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-slate-800/30 p-6 rounded-3xl border border-slate-700/50"
+          >
+            <h4
+              class="text-[10px] font-black text-slate-500 uppercase mb-4 text-center tracking-widest"
+            >
+              Legacy & Persona
+            </h4>
+            <div
+              id="traits-list"
+              class="flex flex-wrap justify-center gap-2"
+            ></div>
+          </div>
+        </div>
+        <button
+          onclick="location.reload()"
+          class="w-full py-5 bg-slate-800 hover:bg-slate-700 rounded-2xl font-black text-sm uppercase tracking-widest transition-all"
+        >
+          Seek New Destiny
+        </button>
+      </div>
+
+      <div
+        id="loading"
+        class="hidden flex flex-col items-center justify-center py-24 space-y-6 text-center"
+      >
+        <div
+          class="w-16 h-16 border-t-2 border-indigo-500 rounded-full animate-spin"
+        ></div>
+        <p
+          id="loading-text"
+          class="text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] animate-pulse"
+        >
+          Synthesizing...
+        </p>
+        <div id="error-box" class="hidden space-y-4">
+          <p
+            id="error-msg"
+            class="text-rose-400 text-[10px] uppercase font-bold tracking-widest italic"
+          ></p>
+          <button
+            onclick="location.reload()"
+            class="px-6 py-3 bg-rose-500/20 border border-rose-500/50 rounded-xl text-rose-400 text-[10px] uppercase font-bold tracking-widest hover:bg-rose-500/40 transition-all"
+          >
+            Retry Synchronization
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      const API_KEY = "AIzaSyDB-Oxy_oSeZWayrodTLTfElCVHQI4WfDA";
+
+      const staticQuestionPool = [
+        {
+          q: "A world-ending event is imminent. What's your first instinct?",
+          options: [
+            "Gather my friends and face it head-on.",
+            "Sit back and watch the chaos unfold.",
+            "Sacrifice myself to buy time.",
+            "Find a way to profit from the aftermath.",
+          ],
+        },
+        {
+          q: "Choose your weapon of choice.",
+          options: [
+            "A legendary sword.",
+            "My bare fists and willpower.",
+            "Forbidden magic that costs my soul.",
+            "Unmatched strategy.",
+          ],
+        },
+        {
+          q: "What's your greatest motivation?",
+          options: [
+            "Upholding family honor.",
+            "Protecting the weak.",
+            "Seeking revenge.",
+            "Becoming the strongest.",
+          ],
+        },
+        {
+          q: "How do you handle betrayal?",
+          options: [
+            "Forgive them.",
+            "Sever all ties.",
+            "Hunt them down.",
+            "It was expected.",
+          ],
+        },
+        {
+          q: "Select your ideal sanctuary.",
+          options: [
+            "A peaceful hidden village.",
+            "A dark throne room.",
+            "A lively tavern.",
+            "A quiet ancient library.",
+          ],
+        },
+      ];
+
+      let questions = [];
+      let currentQuestion = 0;
+      let userAnswers = [];
+
+      const setupScreen = document.getElementById("setup-screen");
+      const quizContainer = document.getElementById("quiz-container");
+      const loading = document.getElementById("loading");
+      const resultArea = document.getElementById("result-area");
+      const loadingText = document.getElementById("loading-text");
+      const errorBox = document.getElementById("error-box");
+      const errorMsg = document.getElementById("error-msg");
+
+      async function generateDynamicQuestions() {
+        setupScreen.classList.add("hidden");
+        loading.classList.remove("hidden");
+        loadingText.innerText = "Generating Trials...";
+        errorBox.classList.add("hidden");
+
+        const prompt = `Generate 5 unique, creative, and personality-revealing anime-themed quiz questions. Each question must have exactly 4 distinct options. Return ONLY valid JSON in this format: [{"q": "Question text", "options": ["opt1", "opt2", "opt3", "opt4"]}, ...]`;
+
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+          });
+
+          const data = await response.json();
+          if (data.error) throw new Error(data.error.message);
+
+          let text = data.candidates[0].content.parts[0].text;
+          text = text.replace(/```json|```/gi, "").trim();
+          questions = JSON.parse(text);
+
+          loading.classList.add("hidden");
+          quizContainer.classList.remove("hidden");
+          loadQuestion();
+        } catch (error) {
+          console.error("Generation Error:", error);
+          loadingText.innerText = "Summoning Failed";
+          errorMsg.innerText =
+            "Could not generate dynamic questions. Using backup pool.";
+          errorBox.classList.remove("hidden");
+
+          // Fallback to static pool
+          setTimeout(() => {
+            questions = staticQuestionPool
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 5);
+            loading.classList.add("hidden");
+            quizContainer.classList.remove("hidden");
+            loadQuestion();
+          }, 2000);
+        }
+      }
+
+      document.getElementById("start-btn").onclick = generateDynamicQuestions;
+
+      function loadQuestion() {
+        const qData = questions[currentQuestion];
+        document.getElementById("question-text").innerText = qData.q;
+        document.getElementById("progress-text").innerText =
+          `Phase ${currentQuestion + 1} / ${questions.length}`;
+        document.getElementById("progress-bar").style.width =
+          `${((currentQuestion + 1) / questions.length) * 100}%`;
+
+        const container = document.getElementById("options-container");
+        container.innerHTML = "";
+        qData.options.forEach((opt, i) => {
+          const btn = document.createElement("button");
+          btn.className =
+            "w-full text-left bg-slate-800/40 border border-slate-700/50 hover:bg-indigo-500/10 hover:border-indigo-500/50 rounded-2xl px-6 py-5 text-sm transition-all duration-300 group";
+          btn.innerHTML = `<span class="text-slate-500 group-hover:text-indigo-400 mr-4 font-black uppercase">0${i + 1}</span> ${opt}`;
+          btn.onclick = () => {
+            userAnswers.push(opt);
+            if (++currentQuestion < questions.length) loadQuestion();
+            else showResult();
+          };
+          container.appendChild(btn);
+        });
+      }
+
+      async function showResult() {
+        quizContainer.classList.add("hidden");
+        loading.classList.remove("hidden");
+        loadingText.innerText = "Consulting the Archives...";
+        errorBox.classList.add("hidden");
+
+        const dataPack = userAnswers
+          .map((ans, i) => `Q: ${questions[i].q} | A: ${ans}`)
+          .join("\n");
+        const prompt = `Match an anime character to these answers:\n${dataPack}\nReturn JSON ONLY: {"name": "...", "role": "...", "description": "...", "strengths": "...", "weaknesses": "...", "persona": ["...", "...", "..."]}`;
+
+        try {
+          // Changed model back to gemini-1.5-flash as requested by AI Studio, but ensured the URL is stable
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+
+          const response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+          });
+
+          const data = await response.json();
+
+          if (data.error) {
+            throw new Error(`${data.error.message} (${data.error.code})`);
+          }
+
+          if (!data.candidates || data.candidates.length === 0)
+            throw new Error("No soul reflection found.");
+
+          let text = data.candidates[0].content.parts[0].text;
+          text = text.replace(/```json|```/gi, "").trim();
+          const result = JSON.parse(text);
+
+          document.getElementById("char-name").innerText = result.name;
+          document.getElementById("char-role").innerText = result.role;
+          document.getElementById("char-desc").innerText = result.description;
+          document.getElementById("char-strengths").innerText =
+            result.strengths;
+          document.getElementById("char-weaknesses").innerText =
+            result.weaknesses;
+
+          const traitsList = document.getElementById("traits-list");
+          traitsList.innerHTML = "";
+          result.persona.forEach((p) => {
+            const span = document.createElement("span");
+            span.className =
+              "bg-indigo-500 text-white px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest";
+            span.innerText = p;
+            traitsList.appendChild(span);
+          });
+
+          loading.classList.add("hidden");
+          resultArea.classList.remove("hidden");
+        } catch (error) {
+          console.error("Link Error:", error);
+          loadingText.innerText = "Link Failed";
+          errorMsg.innerText = error.message;
+          errorBox.classList.remove("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
