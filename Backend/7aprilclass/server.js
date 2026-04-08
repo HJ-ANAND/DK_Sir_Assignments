@@ -58,6 +58,46 @@ app.post("/", (req, res) => {
   });
 });
 
+app.put('/:id', (req,res) => {
+  const id = parseInt(req.params.id);
+  const idx = friends.findIndex(obj => obj.id === id);
+
+  if(idx === -1){
+    return res.status(404).json("Friend doesn't exist");
+  }
+
+  req.body.id = id;
+  friends[idx] = req.body;
+
+  res.json(friends);
+});
+
+app.patch('/:id', (req,res) => {
+  const id = parseInt(req.params.id)
+  const idx = friends.findIndex(obj => obj.id === id);
+
+  if(idx === -1) return res.json("Friend not found.");
+
+  friends[idx] = {...friends[idx], ...req.body}
+
+  res.json(friends);
+});
+
+app.delete('/:id', (req,res) =>{
+  const id = parseInt(req.params.id)
+  const idx = friends.findIndex(obj => obj.id === id);
+
+  if(idx === -1) return res.json("Friend not found.");
+
+  const deletedData = friends.splice(idx, 1);
+
+  res.json({
+    message: "Friend Deleted.",
+    deleted_Data:deletedData,
+    new_Data: friends
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
